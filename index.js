@@ -1,27 +1,24 @@
+const projectIcons = document.getElementById("projects");
 $(window).on("load", function() {
-  var bodyWidth = document.body.clientWidth;
-  var bodyHeight = document.body.clientHeight * 1.5;
+  var bodyWidth = document.body.clientWidth * 0.75;
+  var bodyHeight = document.body.clientHeight * 0.7;
+  const centerX = document.body.clientWidth / 2;
+  const centerY = document.body.clientHeight / 2;
   var pinnedImages = [];
-  console.log(`The body width is ${bodyWidth}`);
   $(".random").each(function(idx, img) {
-    moveImageRandomly(img, bodyWidth, bodyHeight);
+    moveImageRandomly(img, bodyWidth, bodyHeight, centerX, centerY);
     var tries = 0;
     while (pinnedImages.some(p => intersect(img, p))) {
-      console.log("Too much overlap detected. Attempting to re-pin.");
       tries++;
       moveImageRandomly(img, bodyWidth, bodyHeight);
       if (tries > 20) {
-        console.log("Too many tries!");
         break;
       }
     }
-    console.log(
-      `image is pinned at ${img.getBoundingClientRect().x},${
-        img.getBoundingClientRect().y
-      }`
-    );
+
     pinnedImages.push(img);
   });
+
 });
 
 var intersect = function(img1, img2) {
@@ -37,7 +34,38 @@ var intersect = function(img1, img2) {
   );
 };
 
-var moveImageRandomly = function(img, maxWidth, maxHeight) {
-  $(img).css("left", Math.floor(Math.random() * (maxWidth - img.width)));
-  $(img).css("top", Math.floor(Math.random() * maxHeight));
+var moveImageRandomly = function(img, maxWidth, maxHeight, centerX, centerY) {
+  $(img).css("left", centerX + Math.floor(random() * (maxWidth - img.width)));
+  $(img).css("top", centerY + Math.floor(random() * (maxHeight + img.height)));
 };
+
+function random () {
+  return Math.random() - 0.5;
+}
+
+const draggables = new Draggable.default(document.querySelectorAll("img"), {
+  draggable: ".random",
+  sensors: [Draggable.TouchSensor]
+});
+
+let startX;
+let startY;
+
+let diffX;
+let diffY;
+
+draggables.on('drag:start', (event) => {
+  projectIcons.appendChild(event.source);
+  startX = event.sensorEvent.clientX;
+  startY = event.sensorEvent.clientY;
+})
+
+draggables.on('drag:move', event => {
+  diffX = startX - event.sensorEvent.clientX;
+  diffY = startY - event.sensorEvent.clientY;
+
+})
+draggables.on('drag:stop', (event) => {
+ event.originalSource.style.left = parseInt(event.originalSource.style.left,10) - diffX;
+ event.originalSource.style.top = parseInt(event.originalSource.style.top,10) - diffY;
+})
