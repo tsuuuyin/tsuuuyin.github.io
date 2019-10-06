@@ -1,0 +1,190 @@
+body {
+	font-family: Open Sans;
+	font-size: 13px;
+	line-height: 1.3;
+	background-color: #777777;
+	color: #333333;
+	height: 500px;
+
+}
+
+.random {
+	position: absolute;
+	z-index: -1;
+}
+
+header {
+  background-color: #777777;
+  color: #ffffff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 700;
+  float: left;
+  padding: 10px 0 10px 20px;
+}
+
+nav {
+  float: right;
+  padding: 38px 3vh 0 0;
+}
+
+
+
+footer {
+  background-color: #777777;  
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 10px 0 10px 20px;
+
+}
+
+a {
+  color: #ffffff;
+  margin: 0 10px 0 0;
+  text-decoration: none;
+  
+}
+
+a:hover {
+  font-weight: 700;
+}
+
+p {
+  margin: 10px 0 10px 0;
+}
+
+div.info {
+  width: 300px; 
+  position: fixed; 
+  top: 200px; 
+  left: 20px;
+  color: #ffffff;
+  
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 40px 0 0;
+}
+
+
+
+div.aboutleft { 
+float: left;
+margin: 0 20px 0 0;
+display: inline;
+}
+
+
+div.bodyright { 
+float: left;
+width: 450px;
+display: inline;
+
+}
+
+div.wrap { 
+margin: 80px 0px 0 8px;
+height:85vh;
+overflow: scroll;
+
+}
+div.body { 
+height:  70vh;
+margin: 80px 15px 0 15px;
+
+}
+
+div.project {
+  width: 300px;
+  height: 201px;
+  padding: 0 20px 30px 0;
+  float: left;
+  overflow: hidden;
+}
+
+h4 {
+	font-size: 12px;
+	font-weight: 700;
+  float: left;
+  padding: 0px;
+    margin: 5px 0 0 0;
+}
+
+img.grayscale {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+    -webkit-transition: all .3s ease; /* Fade to color for Chrome and Safari */
+    -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+}
+
+img.grayscale:hover {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(0%);
+}
+
+.imgDescription {
+  position: relative;
+  top: -100px;
+  left: 30px;
+  color: #fff;
+  opacity: 0;
+  display: none;
+  
+
+}
+
+
+.project:hover .imgDescription {
+  opacity: 1;
+  display:block;
+}
+
+
+@media (max-width: 480px) {
+  
+  div.info {
+ width: 150px; 
+ position: fixed; 
+  top: 200px; 
+  left: 30px;
+}
+
+h2 {
+  font-size: 14px;
+
+}
+
+h3 {
+  font-size: 10px;
+  font-weight: 400;
+  margin: 10px 40px 0 0;
+}
+
+section {
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0 20px 0 12px;
+  
+
+}
+
+
+  
+  }
+  
